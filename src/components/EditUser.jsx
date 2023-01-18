@@ -17,7 +17,7 @@ const EditUser = () => {
     });
 
     useEffect(() => {
-        fetch("https://www.slothj.com/tomcat/EksamenBackend/api/user/"+usid).then((res)=>{
+        fetch("http://localhost:8080/EksamenBackend_war_exploded/api/user/"+usid).then((res)=>{
             return res.json();
         }).then((res)=>{
             nameChange(res.userName);

@@ -3,7 +3,7 @@ import Axios from "axios";
 
 
 function PostForm(){
-    const url = "https://www.slothj.com/tomcat/EksamenBackend/api/user/add"
+    const url = "http://localhost:8080/EksamenBackend_war_exploded/api/user/add"
     const [data, setData] = useState({
         "userName": "",
         "userPass": "",
@@ -20,6 +20,8 @@ function PostForm(){
         })
             .then(res => {
                 console.log(res.data)
+                data.userName = ""
+                data.userPass = ""
             })
     }
 

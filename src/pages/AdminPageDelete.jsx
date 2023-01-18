@@ -3,8 +3,12 @@ import PostForm from "../components/PostForm.jsx";
 import axios from "axios";
 import EditUser from "../components/EditUser.jsx";
 import {useNavigate} from "react-router-dom";
-import CreateTripForm from '../components/CreateTripForm.jsx';
-import CreateGuideForm from '../components/CreateGuideForm.jsx';
+import CreatePlayerForm from '../components/CreatePlayerForm.jsx';
+import CreateMatchForm from '../components/CreateMatchForm.jsx';
+import CreateLocationForm from '../components/CreateLocationForm.jsx';
+import UpdateMatches from '../components/UpdateMatches.jsx';
+import UpdatePlayer from '../components/UpdatePlayer.jsx';
+import UpdateLocation from '../components/UpdateLocation.jsx';
 
 function AdminPageDelete({UserId}) {
 
@@ -19,7 +23,7 @@ function AdminPageDelete({UserId}) {
 
 
     useEffect(() => {
-        fetch("https://www.slothj.com/tomcat/EksamenBackend/api/user/all")
+        fetch("http://localhost:8080/EksamenBackend_war_exploded/api/user/all")
             .then(res =>{
                 if(res.ok){
                     return res.json()
@@ -28,7 +32,7 @@ function AdminPageDelete({UserId}) {
     }, [])
 
     const handelDelete = (index) => {
-    axios.delete(`https://www.slothj.com/tomcat/EksamenBackend/api/user/${index}`)
+    axios.delete(`http://localhost:8080/EksamenBackend_war_exploded/api/user/${index}`)
         setUsers([...users]);
     window.location.reload(false);
     }
@@ -48,9 +52,12 @@ function AdminPageDelete({UserId}) {
 
 
 
-            {UserId}
-            {<CreateTripForm/>}
-            {<CreateGuideForm/>}
+            {<CreatePlayerForm/>}
+            {<CreateMatchForm/>}
+            {<CreateLocationForm/>}
+            {<UpdateMatches/>}
+            {<UpdatePlayer/>}
+            {<UpdateLocation/>}
             <br /> 
             
                 <ul>
@@ -67,7 +74,6 @@ function AdminPageDelete({UserId}) {
                                 <td>{item.id}</td>
                                 <td>{item.userName}</td>
                                 <td>{item.roles[0]}  {item.roles[1]}</td>
-                                <td><button onClick={() => handleSpeseficUserEdit(item.id)}>edit</button></td>
                                 <button className="delete" onClick={()=>handelDelete(item.id)}>delete</button>
                             </tr>
 

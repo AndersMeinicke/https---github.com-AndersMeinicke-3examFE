@@ -1,4 +1,4 @@
-const URL = "https://www.slothj.com/tomcat/EksamenBackend";
+const URL = "http://localhost:8080/EksamenBackend_war_exploded";
 
 function handleHttpErrors(res) {
     if (!res.ok) {
